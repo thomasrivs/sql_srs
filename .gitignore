@@ -2,3 +2,4 @@
 venv/
 *.csv
 test.py
+data/.*
