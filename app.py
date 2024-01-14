@@ -54,11 +54,14 @@ if query:
     except KeyError as e:
         (st.write("Some columns are missing!"))
 
-n_lines_difference = result.shape[0] - solution_df.shape[0]
-if n_lines_difference != 0:
-    st.write(
-        f"result has a {n_lines_difference} lines difference with the solution_df!"
-    )
+    n_lines_difference = result.shape[0] - solution_df.shape[0]
+    if n_lines_difference != 0:
+        st.write(
+            f"result has a {n_lines_difference} lines difference with the solution_df!"
+        )
+else:
+    result = "waiting for your input"
+    st.subheader(result)
 
 tab2, tab3 = st.tabs(["Tables", "Solution"])
 
