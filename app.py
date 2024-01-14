@@ -1,3 +1,5 @@
+from datetime import date
+from datetime import timedelta
 import duckdb
 import streamlit as st
 import os
@@ -72,6 +74,18 @@ if query:
 else:
     result = "waiting for your input"
     st.subheader(result)
+
+for n_days in [2, 7, 21]:
+    if st.button(f"revoir dans {n_days} jours"):
+        next_review = date.today() + timedelta(days=n_days)
+        con.execute(
+            f"UPDATE memory_state SET last_reviewed = {next_review} WHERE exercise_name='{EXERCISE_NAME}'"
+        )
+        st.rerun()
+
+if st.button("Reset"):
+    con.execute(f"UPDATE memory_state SET last_reviewed = '1970-01-01'")
+    st.rerun()
 
 tab2, tab3 = st.tabs(["Tables", "Solution"])
 
