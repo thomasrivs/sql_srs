@@ -1,5 +1,16 @@
 import duckdb
 import streamlit as st
+import os
+import logging
+
+if "data" not in os.listdir():
+    logging.error(os.listdir())
+    logging.error("creating folder data")
+    os.mkdir("data")
+
+if "my-db.duckdb" not in os.listdir("data"):
+    exec(open("init_db.py").read())
+
 
 con = duckdb.connect(database="data/my-db.duckdb", read_only=False)
 
@@ -55,3 +66,5 @@ with tab2:
 
 with tab3:
     st.write(answer)
+
+con.close()
