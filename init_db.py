@@ -14,6 +14,10 @@ data = {
     "exercise_name": ["beverages_and_food", "sizes_and_trademarks"],
     "tables": [["beverages", "food_items"], ["sizes", "trademarks"]],
     "last_reviewed": ["1980-01-01", "1970-01-01"],
+    "instructions": [
+        "Make a cross join using those tables",
+        "Make a cross join using those tables",
+    ],
 }
 
 memory_state = pd.DataFrame(data)
